@@ -1,7 +1,8 @@
 #sys = this module provides various functions and variablees that are used to manipulate different parts of the python runtime environment
 #any exception basically getting control sys library will automatically have that information
 import sys
-import logging
+from src.logger import logging
+
 
 def error_message_detail(error,error_detail:sys):
     _,_,exc_tb = error_detail.exc_info()#this variable give all the information about on which file exception has occured, on which line number exception has occured
