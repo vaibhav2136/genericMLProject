@@ -7,6 +7,8 @@ from sklearn.model_selection import train_test_split
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
 from dataclasses import dataclass#it si used to create class variables
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 @dataclass# it is a decorator which help us to define the class variable in this class without using __init__ function
 class DataIngestionConfig:#in my data ingestion component any input that is required will be given to this DataIngestionCongig(inputs like where we are going to save Training data or where I have to save raw data or test data)
@@ -49,7 +51,11 @@ if __name__=='__main__':
     train_data,test_data=obj.initiate_data_ingestion()
 
     data_transformation = DataTransformation()
-    data_transformation.initiate_data_transformation(train_data,test_data)
+    
+    train_arr, test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
+
+    modeltrainer = ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
         
 
 
